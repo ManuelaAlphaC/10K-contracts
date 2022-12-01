@@ -16,43 +16,44 @@ contract Data {
     /*
      * ora corrente in diversi parti del mondo
     */
-    function Kyiv() public view returns(uint256){
-        uint256 itIs = ((block.timestamp + 3 hours) - (block.timestamp + 1))/ 60 / 60;
-        return itIs;
+    function Kyiv() public view returns(uint256, string memory){
+        uint256 itIs = ((block.timestamp + 3 hours) - (block.timestamp + 1 hours))/ 60 / 60;
+        return (itIs, "hours");
     }
 
-    function Mosca() public view returns(uint256){
-        uint256 itIs = ((block.timestamp + 4 hours) - (block.timestamp + 1))/ 60 / 60;
-        return itIs;
+    function Mosca() public view returns(uint256, string memory){
+        uint256 itIs = ((block.timestamp + 4 hours) - (block.timestamp + 1 hours))/ 60 / 60;
+        return (itIs, "hours");
     }
 
-    function NewYork() public view returns(string memory,uint256){
-        uint256 itIs = ((block.timestamp + 1) - (block.timestamp - 4 hours))/ 60 / 60;
-        return ("-",itIs);
+    function NewYork() public view returns(string memory,uint256, string memory){
+        uint256 itIs = ((block.timestamp + 1 hours) - (block.timestamp - 4 hours))/ 60 / 60;
+        return ("-", itIs, "hours");
     }
 
-    function Cina() public view returns(uint256){
-        uint256 itIs = ((block.timestamp + 10 hours) - (block.timestamp + 1))/ 60 / 60;
-        return itIs;
+    function Cina() public view returns(uint256, string memory){
+        uint256 itIs = ((block.timestamp + 10 hours) - (block.timestamp + 1 hours))/ 60 / 60;
+        return (itIs, "hours");
     }
 
-    function Giappone() public view returns(uint256){
-        uint256 itIs = ((block.timestamp + 9 hours) - (block.timestamp + 1))/ 60 / 60;
-        return itIs;
+    function Giappone() public view returns(uint256, string memory){
+        uint256 itIs = ((block.timestamp + 9 hours) - (block.timestamp + 1 hours))/ 60 / 60;
+        return (itIs, "hours");
     }
 
     /*
      * differenza tra due date, risultato in giorni
     */
-    function differenc() public view returns(uint256){
-        return (tomorow - today) / 60 / 60 / 24;
+    function diference(uint256 first, uint256 second) public pure returns(uint256, string memory) {
+        uint256 diff = (first-second)/60/60/24;
+        return (diff, "days");
     }
 
     /*
      * confronto tra due date
     */
-    function confront(uint256 data1, uint256 data2) public pure returns(bool){
-        if(data1 > data2) return true;
+    function confront(uint256 time1, uint256 time2) public pure returns(bool){
+        if(time1 > time2) return true;
         return false;
     }
 
@@ -60,8 +61,8 @@ contract Data {
      * la data è trascorsa?
      * il block.timestamp è un'ora indietro rispetto all'ora italiana
     */
-    function timePassed(uint256 finishData) public view returns(bool){
-        return ((block.timestamp + 1 hours) >=(finishData + 1 seconds));
+    function timePassed(uint256 finishTime) public view returns(bool){
+        return ((block.timestamp + 1 hours) >=(finishTime));
     }
 
     /*
