@@ -2,7 +2,7 @@
 
 pragma solidity 0.8.17;
 
-contract Data {
+contract Time {
     uint256 _seconds = 30 seconds; // 30
     uint256 _minutes = 5 minutes; // 5*60
     uint256 _hours = 1 hours; // 1*60*60
